@@ -22,6 +22,23 @@
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+    desktop = "${config.home.homeDirectory}/desktop";
+    documents = "${config.home.homeDirectory}/documents";
+    download = "${config.home.homeDirectory}/downloads";
+    music = "${config.home.homeDirectory}/music";
+    pictures = "${config.home.homeDirectory}/pictures";
+    videos = "${config.home.homeDirectory}/videos";
+    publicShare = null;
+    templates = null;
+    extraConfig = {
+      XDG_CODE_DIR = "${config.home.homeDirectory}/code";
+      XDG_WALLPAPER_DIR = "${config.home.homeDirectory}/wallpapers";
+    };
+  };
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -434,7 +451,7 @@
       background = [
         {
           monitor = "eDP-1";
-          path = "~/Wallpapers/illustration-rain-futuristic-city.png";
+          path = "~/wallpapers/illustration-rain-futuristic-city.png";
 
           blur_passes = 1; # 0 disables blurring
           blur_size = 7;
@@ -566,10 +583,10 @@
       ipc = "off";
       splash = false;
       preload = [
-        "~/Wallpapers/illustration-rain-futuristic-city.png"
+        "~/wallpapers/illustration-rain-futuristic-city.png"
       ];
       wallpaper = [
-        ",~/Wallpapers/illustration-rain-futuristic-city.png"
+        "~/wallpapers/illustration-rain-futuristic-city.png"
       ];
     };
   };

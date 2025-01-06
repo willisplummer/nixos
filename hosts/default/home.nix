@@ -533,7 +533,7 @@
             ",XF86MonBrightnessUp, exec, ${volume-brightness} brightness_up"
             # ",XF86MonBrightnessDown,exec, ${brightnessctl} set 5%-"
             ",XF86MonBrightnessDown, exec, ${volume-brightness} brightness_down"
-            ",switch:Lid Switch, exec, systemctl suspend"
+            # ",switch:Lid Switch, exec, systemctl suspend"
           ]
           ++ (builtins.concatLists (
             builtins.genList (

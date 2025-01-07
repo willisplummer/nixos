@@ -142,6 +142,8 @@
       confirm-close-surface = false;
       shell-integration = "zsh";
       resize-overlay = "never";
+      background-opacity = 0.8;
+      background-blur-radius = 20;
     };
   };
 

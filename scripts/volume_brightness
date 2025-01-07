@@ -91,6 +91,10 @@ function show_volume_notif {
     fi
 }
 
+function show_mic_mute_notif {
+    notify-send -t $notification_timeout -h string:x-dunst-stack-tag:mic_notif -h "Mic Mute Toggled"
+}
+
 # Displays a music notification
 function show_music_notif {
     song_title=$(playerctl -f "{{title}}" metadata)
@@ -136,6 +140,12 @@ case $1 in
     # Toggles mute and displays the notification
     pactl set-sink-mute @DEFAULT_SINK@ toggle
     show_volume_notif
+    ;;
+
+    mic_mute)
+    # Toggles mic mute and displays the notification
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+    show_mic_mute_notif
     ;;
 
     brightness_up)

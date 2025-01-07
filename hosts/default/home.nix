@@ -54,6 +54,8 @@
     light
     brightnessctl
 
+    feishin # jellyfin music player
+
     #terminals
     wezterm
     kitty
@@ -525,11 +527,11 @@
         bind =
           [
             "$mod, Q, exec, $terminal"
-            # "$mod, L, exec, $browser"
             "$mod, F, exec, $fileManager"
             "$mod, W, killactive"
             "$mod, SPACE, exec, $menu"
             "$mod SHIFT, L, exec, $lock"
+            "$mod, B, exec, $browser"
             "$mod, ESCAPE, exec, dunstctl close-all"
 
             "$mod, h, movefocus, l"
@@ -539,18 +541,6 @@
 
             ", Print, exec, grimblast copy area"
 
-            ",XF86AudioRaiseVolume, exec, ${volume-brightness} volume_up"
-            # ",XF86AudioRaiseVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ +5%"
-            ",XF86AudioLowerVolume, exec, ${volume-brightness} volume_down"
-            # ",XF86AudioLowerVolume,exec,${pactl} set-sink-volume @DEFAULT_SINK@ -5%"
-            ",XF86AudioMute, exec, ${volume-brightness} volume_mute"
-            # ",XF86AudioMute,exec,${pactl} set-sink-mute @DEFAULT_SINK@ toggle"
-            ",XF86AudioMicMute, exec,${pactl} set-source-mute @DEFAULT_SOURCE@ toggle"
-            # ",XF86MonBrightnessUp,exec, ${brightnessctl} set +5%"
-            ",XF86MonBrightnessUp, exec, ${volume-brightness} brightness_up"
-            # ",XF86MonBrightnessDown,exec, ${brightnessctl} set 5%-"
-            ",XF86MonBrightnessDown, exec, ${volume-brightness} brightness_down"
-            # ",switch:Lid Switch, exec, systemctl suspend"
           ]
           ++ (builtins.concatLists (
             builtins.genList (
@@ -564,6 +554,20 @@
               ]
             ) 9
           ));
+
+        # l -> work even when screen is locked
+        bindl = [
+          ",XF86AudioMute, exec, ${volume-brightness} volume_mute"
+          # ",XF86AudioMicMute, exec, ${volume-brightness} mic_mute" NOTE: couldn't get this one to work
+        ];
+
+        # e -> repeat enabled
+        bindle = [
+          ",XF86AudioRaiseVolume, exec, ${volume-brightness} volume_up"
+          ",XF86AudioLowerVolume, exec, ${volume-brightness} volume_down"
+          ",XF86MonBrightnessUp, exec, ${volume-brightness} brightness_up"
+          ",XF86MonBrightnessDown, exec, ${volume-brightness} brightness_down"
+        ];
 
         "exec-once" = [
           #greetd auto-logs us in and then we start hyprlock

@@ -35,7 +35,7 @@
     templates = null;
     extraConfig = {
       XDG_CODE_DIR = "${config.home.homeDirectory}/code";
-      XDG_WALLPAPER_DIR = "${config.home.homeDirectory}/wallpapers";
+      XDG_WALLPAPER_DIR = "${config.home.homeDirectory}/wallpaper";
     };
   };
 
@@ -451,7 +451,7 @@
       background = [
         {
           monitor = "eDP-1";
-          path = "~/wallpapers/illustration-rain-futuristic-city.png";
+          path = "~/wallpaper/illustration-rain-futuristic-city.png";
 
           blur_passes = 1; # 0 disables blurring
           blur_size = 7;
@@ -583,10 +583,10 @@
       ipc = "off";
       splash = false;
       preload = [
-        "~/wallpapers/illustration-rain-futuristic-city.png"
+        "~/wallpaper/illustration-rain-futuristic-city.png"
       ];
       wallpaper = [
-        "~/wallpapers/illustration-rain-futuristic-city.png"
+        "~/wallpaper/illustration-rain-futuristic-city.png"
       ];
     };
   };
@@ -761,9 +761,10 @@
   # plain files is through 'home.file'.
   home.file = {
     "README.md".source = ../../README.md;
+    "wallpaper/illustration-rain-futuristic-city.png".source =
+      ../../configs/wallpaper/illustration-rain-futuristic-city.png;
     ".ignore".source = ../../configs/ignore;
     ".p10k.zsh".source = ../../configs/p10k.zsh;
-    # ".config/ghostty/config".source = ../../dotfiles/ghostty;
     ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nvim";
     ".local/bin/tmux-sessionizer".source = ../../scripts/tmux-sessionizer;
     ".local/bin/tmux-windowizer".source = ../../scripts/tmux-windowizer;

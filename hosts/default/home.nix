@@ -54,6 +54,10 @@
     light
     brightnessctl
 
+    feh
+    chafa
+    viu
+
     feishin # jellyfin music player
 
     #terminals
@@ -453,7 +457,7 @@
       background = [
         {
           monitor = "eDP-1";
-          path = "~/wallpaper/illustration-rain-futuristic-city.png";
+          path = "${config.home.homeDirectory}/wallpaper/illustration-rain-futuristic-city.png";
 
           blur_passes = 1; # 0 disables blurring
           blur_size = 7;
@@ -590,7 +594,7 @@
         "~/wallpaper/illustration-rain-futuristic-city.png"
       ];
       wallpaper = [
-        "~/wallpaper/illustration-rain-futuristic-city.png"
+        ",~/wallpaper/illustration-rain-futuristic-city.png" # NOTE: leading comma means apply to all monitors
       ];
     };
   };

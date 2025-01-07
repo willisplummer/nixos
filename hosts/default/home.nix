@@ -558,7 +558,7 @@
         # l -> work even when screen is locked
         bindl = [
           ",XF86AudioMute, exec, ${volume-brightness} volume_mute"
-          # ",XF86AudioMicMute, exec, ${volume-brightness} mic_mute" NOTE: couldn't get this one to work
+          ",XF86AudioMicMute, exec, ${volume-brightness} mic_mute" # NOTE: couldn't get this one to work
         ];
 
         # e -> repeat enabled

@@ -23,7 +23,7 @@ I'm planning to modularize this config a bit so that I can make it work for my m
 
 ##Bugs
 - [ ] hyprlock doesn't complete before laptop hybernates when closing the lid - [issue](https://github.com/hyprwm/hyprlock/issues/633) and [2](https://github.com/hyprwm/hyprlock/issues/547)
-- [ ] when hyprlock screen is displayed, laptop doesn't hybernate on lid close
+- [x] when hyprlock screen is displayed, laptop doesn't hybernate on lid close
 
 ## Docs
 - https://nixos-and-flakes.thiscute.world/preface

@@ -558,7 +558,7 @@
                 "$mod, code:1${toString i}, workspace, ${toString ws}"
                 "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
               ]
-            ) 9
+            ) 10
           ));
 
         # l -> work even when screen is locked

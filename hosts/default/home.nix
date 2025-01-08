@@ -54,9 +54,7 @@
     light
     brightnessctl
 
-    feh
-    chafa
-    viu
+    feh # image viewer/preview tool
 
     feishin # jellyfin music player
 

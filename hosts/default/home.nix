@@ -145,6 +145,22 @@
     };
   };
 
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      "photoassist.com" = {
+        host = "*.rightspro.com";
+        user = "ubuntu";
+        identityFile = "/home/wmp224/.ssh/photoassist.pem";
+      };
+      "archive.meredithmonk.org" = {
+        host = "*.meredithmonk.org";
+        user = "willisplummer";
+        identityFile = "/home/wmp224/.ssh/mmgcloud";
+      };
+    };
+  };
+
   programs.waybar.enable = true;
   programs.waybar.settings = {
     mainBar = {

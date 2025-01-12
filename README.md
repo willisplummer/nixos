@@ -5,9 +5,9 @@ I'm planning to modularize this config a bit so that I can make it work for my m
 
 ##To-Do
 ###P1
-- [ ] low power alerts at 15 and 5%
+- [x] configure ssh profiles in home-manager
+- [x] low power alerts at 15 and 5%
 - [ ] mac-style alt+left, alt+right, alt+delete to jump forward and backward, delete one whole word, shift delete for whole line
-- [ ] configure ssh profiles in home-manager
 - [ ] setup syncthing for obsidian vault
 - [ ] open my apps to the right workspaces on launch - https://wiki.hyprland.org/FAQ/#how-do-i-autostart-my-favorite-apps
   - https://wiki.hyprland.org/Configuring/Window-Rules/

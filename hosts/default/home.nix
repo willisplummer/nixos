@@ -597,6 +597,7 @@
           "hyprpaper"
           "blueman-tray"
           "nm-applet"
+          "battery-notify"
         ];
       };
   };
@@ -793,6 +794,7 @@
     ".local/bin/tmux-sessionizer".source = ../../scripts/tmux-sessionizer;
     ".local/bin/tmux-windowizer".source = ../../scripts/tmux-windowizer;
     ".local/bin/volume_brightness".source = ../../scripts/volume_brightness;
+    ".local/bin/battery_notify".source = ../../scripts/battery_notify;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''

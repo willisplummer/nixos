@@ -515,7 +515,7 @@
         pactl = "${pkgs.pulseaudio}/bin/pactl";
         pamixer = "${pkgs.pamixer}/bin/pamixer";
         brightnessctl = "${pkgs.lib.getExe pkgs.brightnessctl}";
-        volume-brightness = "/home/wmp224/.local/bin/volume_brightness";
+        volume-brightness = "/home/wmp224/.local/bin/volume-brightness";
       in
       {
         "$mod" = "SUPER";
@@ -793,8 +793,8 @@
     ".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nvim";
     ".local/bin/tmux-sessionizer".source = ../../scripts/tmux-sessionizer;
     ".local/bin/tmux-windowizer".source = ../../scripts/tmux-windowizer;
-    ".local/bin/volume_brightness".source = ../../scripts/volume_brightness;
-    ".local/bin/battery_notify".source = ../../scripts/battery_notify;
+    ".local/bin/volume-brightness".source = ../../scripts/volume-brightness;
+    ".local/bin/battery-notify".source = ../../scripts/battery-notify;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''

@@ -41,6 +41,7 @@ in
       pkgs.prettierd
       pkgs.rust-analyzer
       pkgs.typescript-language-server
+      pkgs.ccls
     ];
   };
 }

@@ -54,11 +54,12 @@
     light
     brightnessctl
 
-    feh # image viewer/preview tool
+    feh # image viewer/preview tool -- not wayland native
+    imv # wayland native image viewer
 
     # jellyfin music players
     feishin
-    supersonic
+    supersonic-wayland
 
     #terminals
     wezterm
@@ -735,6 +736,8 @@
       bindkey '^[[1;3D' backward-word
       bindkey '^[[1;3C' forward-word
       bindkey '^[^?' backward-kill-word
+
+      source ~/.local/bin/todoist_functions_fzf
     '';
   };
 
@@ -797,12 +800,20 @@
     ".local/bin/tmux-windowizer".source = ../../scripts/tmux-windowizer;
     ".local/bin/volume-brightness".source = ../../scripts/volume-brightness;
     ".local/bin/battery-notify".source = ../../scripts/battery-notify;
+    ".local/bin/todoist_functions_fzf".source =
+      pkgs.fetchFromGitHub {
+        owner = "sachaos";
+        repo = "todoist";
+        rev = "a05b353979def33f538dd307e3570897cf9d5ab3";
+        sha256 = "sha256-+UECYUozca7PKKiTrmPAobSF0y6xnWYCGaChk9bwANg=";
+      }
+      + "/todoist_functions_fzf.sh";
 
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
+    # You can also set the file content immediately.
+    ".gradle/gradle.properties".text = ''
+      org.gradle.console=verbose
+      org.gradle.daemon.idletimeout=3600000
+    '';
   };
 
   # Home Manager can also manage your environment variables through

@@ -133,6 +133,7 @@
     ];
     packages = with pkgs; [
       zig
+      gnumake # make
       #hyprland-qtutils
       wl-clipboard
       #  thunderbird

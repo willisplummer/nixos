@@ -56,7 +56,9 @@
 
     feh # image viewer/preview tool
 
-    feishin # jellyfin music player
+    # jellyfin music players
+    feishin
+    supersonic
 
     #terminals
     wezterm

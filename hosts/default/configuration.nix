@@ -134,15 +134,14 @@
     packages = with pkgs; [
       zig
       gnumake # make
-      #hyprland-qtutils
+      cmake
+      gcc
       wl-clipboard
-      #  thunderbird
     ];
     shell = pkgs.zsh;
   };
 
   display.greetd.enable = true;
-  # display.greetd.command = "hyprlock";
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };

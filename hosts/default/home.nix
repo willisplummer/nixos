@@ -92,6 +92,7 @@
     waybar
     wofi
     inputs.hyprland-qtutils.packages."${pkgs.system}".default
+
   ];
   wmp224.nvim.enable = true;
 

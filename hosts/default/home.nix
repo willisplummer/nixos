@@ -536,6 +536,10 @@
         decoration = {
           rounding = 0;
         };
+        monitor = [
+          "eDP-1, 1920x1080@60, 0x0, 1"
+          ", preferred, auto, 1"
+        ];
         input = {
           repeat_delay = 200;
           repeat_rate = 50;

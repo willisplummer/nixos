@@ -608,8 +608,9 @@
           "blueman-tray"
           "nm-applet"
           "battery-notify"
-          "[workspace 1 silent] $terminal -e neofetch"
+          "[workspace 1 silent] $terminal -e 'neofetch; zsh'"
           "[workspace 2 silent] $browser"
+          "[workspace 9 silent] supersonic-wayland"
           "[workspace 10 silent] bitwarden"
         ];
       };

@@ -454,15 +454,27 @@
         lock_cmd = "pidof hyprlock || hyprlock";
         before_sleep_cmd = "loginctl lock-session"; # lock before suspend.
         after_sleep_cmd = "hyprctl dispatch dpms on"; # to avoid having to press a key to turn on the display
+        ignore_dbus_inhibit = false;
+        ignore_systemd_inhibit = false;
+        # it doesn't seem like this is in my version yet
+        # inhibit_sleep = 3; # makes your system wait until the session gets locked by a lock screen app. This works with all wayland session-lock apps.
       };
 
       listener = [
         {
+          # dim screen
+          timeout = 240;
+          on-timeout = "brightnessctl -s set 1";
+          on-resume = "brightnessctl -r";
+        }
+        {
+          # lockscreen
           timeout = 300;
           on-timeout = "loginctl lock-session";
         }
         {
-          timeout = 350;
+          # turnoff screen
+          timeout = 360;
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on";
         }

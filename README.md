@@ -3,6 +3,19 @@ This is currently the configuration specifically for my thinkpad running hyprlan
 
 I'm planning to modularize this config a bit so that I can make it work for my macbook that uses nix and home-manager.
 
+## To Update Packages
+```
+nix flake update
+sudo nixos-rebuild switch --flake ~/nix --update
+```
+
+### Handling Build Issue
+Recently ran into an error where electron 31 was EOL and that was preventing the nixos-rebuild from completing.
+
+To debug, I ran the command again with `--show-trace`, which revealed what pkg was dependent on the outdated electron version. I commented out that pkg and it worked.
+
+I think I could theoretically write a custom flake for the pkg, PR it into the nixpkgs repo, etc. But I wasn't actually using it (due to its slowness as an electron app)
+
 ## To-Do
 ### P1
 - [x] configure ssh profiles in home-manager
@@ -10,7 +23,7 @@ I'm planning to modularize this config a bit so that I can make it work for my m
 - [ ] mac-style alt+left, alt+right, alt+delete to jump forward and backward, delete one whole word, shift delete for whole line
 - [ ] up and down navigation through autocomplete options not working
 - [ ] setup syncthing for obsidian vault
-- [ ] open my apps to the right workspaces on launch - https://wiki.hyprland.org/FAQ/#how-do-i-autostart-my-favorite-apps
+- [x] open my apps to the right workspaces on launch - https://wiki.hyprland.org/FAQ/#how-do-i-autostart-my-favorite-apps
   - https://wiki.hyprland.org/Configuring/Window-Rules/
   - or just write a bash script to do it and run the script with exec-once
   - terminal in 1, browser in 2, supersonic in 9, bitwarden in 10

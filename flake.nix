@@ -8,11 +8,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland-qtutils = {
-      url = "github:hyprwm/hyprland-qtutils";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };
@@ -22,7 +17,6 @@
     {
       self,
       nixpkgs,
-      hyprland-qtutils,
       ghostty,
       ...
     }@inputs:

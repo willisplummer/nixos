@@ -58,7 +58,7 @@
     imv # wayland native image viewer
 
     # jellyfin music players
-    feishin
+    # feishin -- note: electron dependency was causing problems
     supersonic-wayland
 
     #terminals
@@ -87,12 +87,14 @@
     hyprpaper
     hypridle
     hyprlock
+    hyprland-qtutils
+
     wl-clipboard
     grimblast
     waybar
     wofi
-    inputs.hyprland-qtutils.packages."${pkgs.system}".default
 
+    neofetch
   ];
   wmp224.nvim.enable = true;
 
@@ -606,6 +608,9 @@
           "blueman-tray"
           "nm-applet"
           "battery-notify"
+          "[workspace 1 silent] $terminal -e neofetch"
+          "[workspace 2 silent] $browser"
+          "[workspace 10 silent] bitwarden"
         ];
       };
   };

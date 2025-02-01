@@ -85,7 +85,8 @@
     bitwarden-desktop
 
     hyprpaper
-    hypridle
+    # hypridle
+    inputs.hypridle.packages."${pkgs.system}".default
     hyprlock
     hyprland-qtutils
 
@@ -457,7 +458,7 @@
         ignore_dbus_inhibit = false;
         ignore_systemd_inhibit = false;
         # it doesn't seem like this is in my version yet
-        # inhibit_sleep = 3; # makes your system wait until the session gets locked by a lock screen app. This works with all wayland session-lock apps.
+        inhibit_sleep = 3; # makes your system wait until the session gets locked by a lock screen app. This works with all wayland session-lock apps.
       };
 
       listener = [

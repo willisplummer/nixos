@@ -11,6 +11,9 @@
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };
+    hypridle = {
+      url = "github:hyprwm/hypridle";
+    };
   };
 
   outputs =
@@ -18,6 +21,7 @@
       self,
       nixpkgs,
       ghostty,
+      hypridle,
       ...
     }@inputs:
     {

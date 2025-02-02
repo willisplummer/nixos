@@ -86,7 +86,6 @@
 
     hyprpaper
     # hypridle
-    inputs.hypridle.packages."${pkgs.system}".default
     hyprlock
     hyprland-qtutils
 
@@ -450,6 +449,7 @@
 
   services.hypridle = {
     enable = true;
+    package = inputs.hypridle.packages."${pkgs.system}".default;
     settings = {
       general = {
         lock_cmd = "pidof hyprlock || hyprlock";

@@ -457,7 +457,6 @@
         after_sleep_cmd = "hyprctl dispatch dpms on"; # to avoid having to press a key to turn on the display
         ignore_dbus_inhibit = false;
         ignore_systemd_inhibit = false;
-        # it doesn't seem like this is in my version yet
         inhibit_sleep = 3; # makes your system wait until the session gets locked by a lock screen app. This works with all wayland session-lock apps.
       };
 
@@ -465,7 +464,7 @@
         {
           # dim screen
           timeout = 240;
-          on-timeout = "brightnessctl -s set 1";
+          on-timeout = "brightnessctl -s set 30";
           on-resume = "brightnessctl -r";
         }
         {

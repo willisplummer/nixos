@@ -14,6 +14,9 @@
     hypridle = {
       url = "github:hyprwm/hypridle";
     };
+    hyprlock = {
+      url = "github:hyprwm/hyprlock";
+    };
   };
 
   outputs =
@@ -22,6 +25,7 @@
       nixpkgs,
       ghostty,
       hypridle,
+      hyprlock,
       ...
     }@inputs:
     {

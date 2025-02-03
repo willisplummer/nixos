@@ -56,6 +56,7 @@
 
     feh # image viewer/preview tool -- not wayland native
     imv # wayland native image viewer
+    zathura # wayland native pdf reader
 
     # jellyfin music players
     # feishin -- note: electron dependency was causing problems
@@ -64,7 +65,7 @@
     #terminals
     wezterm
     kitty
-    ghostty
+    # ghostty
 
     direnv # enables automatically switching into nix-shell dev environments when cd'ing into a repo
 
@@ -133,6 +134,7 @@
 
   programs.ghostty = {
     enable = true;
+    package = inputs.ghostty.packages."${pkgs.system}".default;
     enableZshIntegration = true;
     installBatSyntax = true;
     installVimSyntax = true;
@@ -487,6 +489,7 @@
   };
   programs.hyprlock = {
     enable = true;
+    package = inputs.hyprlock.packages."${pkgs.system}".default;
     settings = {
       background = [
         {

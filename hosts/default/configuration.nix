@@ -80,7 +80,11 @@
     });
   };
 
-  programs.hyprlock.enable = true;
+  programs.hyprlock = {
+    enable = true;
+    package = inputs.hyprlock.packages."${pkgs.system}".default;
+  };
+
   security.pam.services.hyprlock = { };
 
   environment.sessionVariables = {

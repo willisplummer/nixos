@@ -70,6 +70,7 @@
     direnv # enables automatically switching into nix-shell dev environments when cd'ing into a repo
 
     todoist # cli, free and opensource
+    protonvpn-gui
 
     tmux
     tmuxPlugins.vim-tmux-navigator
@@ -87,7 +88,7 @@
 
     hyprpaper
     # hypridle
-    hyprlock
+    # hyprlock
     hyprland-qtutils
 
     wl-clipboard

@@ -472,18 +472,18 @@
         }
         {
           # lockscreen
-          timeout = 300;
+          timeout = 300; # 5 minutes
           on-timeout = "loginctl lock-session";
         }
         {
           # turnoff screen
-          timeout = 360;
+          timeout = 360; # 6 minutes
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on";
         }
         {
-          timeout = 420;
-          on-timeout = "systemctl suspend";
+          timeout = 900; # 15 minutes
+          on-timeout = "systemd-ac-power || systemctl suspend"; # dont suspend when plugged in
         }
       ];
     };

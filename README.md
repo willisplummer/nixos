@@ -47,6 +47,7 @@ I think I could theoretically write a custom flake for the pkg, PR it into the n
 ## Bugs
 - [ ] hyprlock doesn't complete before laptop hybernates when closing the lid - [issue](https://github.com/hyprwm/hyprlock/issues/633) and [2](https://github.com/hyprwm/hyprlock/issues/547)
   - NOTE: looks like this has been fixed in hypridle - just waiting for the new release
+- [x] hyprlock doesn't lock monitor (just the laptop screen)
 - [x] when hyprlock screen is displayed, laptop doesn't hybernate on lid close
 
 ## Docs

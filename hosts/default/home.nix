@@ -494,7 +494,7 @@
     settings = {
       background = [
         {
-          monitor = "eDP-1";
+          monitor = "";
           path = "${config.home.homeDirectory}/wallpaper/illustration-rain-futuristic-city.png";
 
           blur_passes = 1; # 0 disables blurring

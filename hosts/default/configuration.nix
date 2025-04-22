@@ -136,6 +136,7 @@
       "networkmanager"
       "wheel"
       "video"
+      "docker"
     ];
     packages = with pkgs; [
       zig

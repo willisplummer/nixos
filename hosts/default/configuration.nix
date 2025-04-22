@@ -51,6 +51,8 @@
   # see - https://github.com/NixOS/nixpkgs/pull/361373
   services.tzupdate.enable = true;
 
+  virtualisation.docker.enable = true;
+
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 

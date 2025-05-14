@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }:
 {
@@ -87,8 +88,6 @@
     bitwarden-desktop
 
     hyprpaper
-    # hypridle
-    # hyprlock
     hyprland-qtutils
 
     wl-clipboard
@@ -455,8 +454,8 @@
     package = inputs.hypridle.packages."${pkgs.system}".default;
     settings = {
       general = {
-        lock_cmd = "pidof hyprlock || hyprlock";
-        before_sleep_cmd = "loginctl lock-session"; # lock before suspend.
+        lock_cmd = "$lock";
+        before_sleep_cmd = "$lock --immediate"; # lock before suspend.
         after_sleep_cmd = "hyprctl dispatch dpms on"; # to avoid having to press a key to turn on the display
         ignore_dbus_inhibit = false;
         ignore_systemd_inhibit = false;
@@ -545,7 +544,7 @@
         "$terminal" = "ghostty";
         "$fileManager" = "thunar";
         "$browser" = "firefox";
-        "$lock" = "hyprlock";
+        "$lock" = "pidof hyprlock || hyprlock";
         general = {
           border_size = 1;
           gaps_in = 5;
@@ -722,50 +721,54 @@
       ignoreDups = true;
     };
 
-    initExtraBeforeCompInit = ''
-      if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
-        source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
-      fi
-    '';
+    initContent = lib.mkMerge [
+      # initExtraBeforeCompInit
+      (lib.mkOrder 550 ''
+        if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+          source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+            fi
+      '')
 
-    initExtra = ''
-      git_current_branch () {
-        local ref
-        ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
-        local ret=$?
-        if [[ $ret != 0 ]]
-        then
-                [[ $ret == 128 ]] && return
-                ref=$(command git rev-parse --short HEAD 2> /dev/null)  || return
-        fi
-        echo ''${ref#refs/heads/}
-      }
+      #initExtra
+      (lib.mkOrder 800 ''
+                 git_current_branch () {
+                 local ref
+                 ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
+                 local ret=$?
+                 if [[ $ret != 0 ]]
+                 then
+                 [[ $ret == 128 ]] && return
+                 ref=$(command git rev-parse --short HEAD 2> /dev/null)  || return
+                 fi
+                 echo ''${ref#refs/heads/}
+                 }
 
-      export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-      export PATH=$PATH:$HOME/.stack/programs/
-      export PATH=$PATH:$HOME/.local/bin
-      export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-      export PATH="$HOME/.pyenv/shims:$PATH"
+                 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+                 export PATH=$PATH:$HOME/.stack/programs/
+                 export PATH=$PATH:$HOME/.local/bin
+                 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+                 export PATH="$HOME/.pyenv/shims:$PATH"
 
-      export LUA_PATH="$HOME/.local/share/nvim:$LUA_PATH"
+                 export LUA_PATH="$HOME/.local/share/nvim:$LUA_PATH"
 
-      source ~/.p10k.zsh
+                 source ~/.p10k.zsh
 
-      setopt HIST_VERIFY
+                 setopt HIST_VERIFY
 
-      # keybindings
-      bindkey -s ^f "tmux-sessionizer\n"
+        # keybindings
+                 bindkey -s ^f "tmux-sessionizer\n"
 
-      # completion using arrow keys (based on history)
-      bindkey '^[[A' history-search-backward
-      bindkey '^[[B' history-search-forward
+        # completion using arrow keys (based on history)
+                 bindkey '^[[A' history-search-backward
+                 bindkey '^[[B' history-search-forward
 
-      bindkey '^[[1;3D' backward-word
-      bindkey '^[[1;3C' forward-word
-      bindkey '^[^?' backward-kill-word
+                 bindkey '^[[1;3D' backward-word
+                 bindkey '^[[1;3C' forward-word
+                 bindkey '^[^?' backward-kill-word
 
-      source ~/.local/bin/todoist_functions_fzf
-    '';
+                 source ~/.local/bin/todoist_functions_fzf
+      '')
+    ];
   };
 
   programs.tmux = {

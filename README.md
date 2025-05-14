@@ -18,17 +18,20 @@ I think I could theoretically write a custom flake for the pkg, PR it into the n
 
 ## To-Do
 ### P1
+- [ ] hyprlock doesn't complete before laptop hybernates when closing the lid - [issue](https://github.com/hyprwm/hyprlock/issues/633) and [2](https://github.com/hyprwm/hyprlock/issues/547)
+  - NOTE: looks like this has been fixed in hypridle - just waiting for the new release
+  - still doesn't work for me as of 5/13/25
 - [x] configure ssh profiles in home-manager
 - [x] low power alerts at 15 and 5%
-- [ ] mac-style alt+left, alt+right, alt+delete to jump forward and backward, delete one whole word, shift delete for whole line
-- [ ] up and down navigation through autocomplete options not working
-- [ ] setup syncthing for obsidian vault
 - [x] open my apps to the right workspaces on launch - https://wiki.hyprland.org/FAQ/#how-do-i-autostart-my-favorite-apps
   - https://wiki.hyprland.org/Configuring/Window-Rules/
   - or just write a bash script to do it and run the script with exec-once
   - terminal in 1, browser in 2, supersonic in 9, bitwarden in 10
 
 ### P2
+- [ ] mac-style alt+left, alt+right, alt+delete to jump forward and backward, delete one whole word, shift delete for whole line
+- [ ] up and down navigation through autocomplete options not working
+- [ ] setup syncthing for obsidian vault
 - [ ] todo list solution (do i just cave and install todoist gui even though it's not FOSS?)
 - [ ] disable firefox password manager (https://mozilla.github.io/policy-templates/ and https://discourse.nixos.org/t/declare-firefox-extensions-and-settings/36265)
   - enable bitwarden extension through home-manager?
@@ -45,8 +48,6 @@ I think I could theoretically write a custom flake for the pkg, PR it into the n
 - [ ] look into the best strategies around hard-drive partitioning
 
 ## Bugs
-- [ ] hyprlock doesn't complete before laptop hybernates when closing the lid - [issue](https://github.com/hyprwm/hyprlock/issues/633) and [2](https://github.com/hyprwm/hyprlock/issues/547)
-  - NOTE: looks like this has been fixed in hypridle - just waiting for the new release
 - [x] hyprlock doesn't lock monitor (just the laptop screen)
 - [x] when hyprlock screen is displayed, laptop doesn't hybernate on lid close
 

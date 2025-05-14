@@ -31,7 +31,6 @@
     {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
-        download-buffer-size = "512MiB";
         modules = [
           ./hosts/default/configuration.nix
           inputs.home-manager.nixosModules.default

@@ -8,33 +8,23 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-    };
-    hypridle = {
-      url = "github:hyprwm/hypridle";
-    };
-    hyprlock = {
-      url = "github:hyprwm/hyprlock";
-    };
   };
 
   outputs =
+    inputs@{ nixpkgs, home-manager, ... }:
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs { inherit system; };
+    in
     {
-      self,
-      nixpkgs,
-      ghostty,
-      hypridle,
-      hyprlock,
-      ...
-    }@inputs:
-    {
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/default/configuration.nix
-          inputs.home-manager.nixosModules.default
-        ];
+      homeConfigurations = {
+        dev = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = {
+            inputs = inputs;
+          };
+          modules = [ ./hosts/default/home.nix ];
+        };
       };
     };
 }

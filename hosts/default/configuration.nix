@@ -105,6 +105,13 @@
     variant = "";
   };
 
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "*/5 * * * * wmp224 /your/install/location/scripts/update-port.sh"
+    ];
+  };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 

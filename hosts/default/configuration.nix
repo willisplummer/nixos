@@ -17,6 +17,7 @@
     "flakes"
   ];
   nix.settings.allowUnfree = true;
+  pkgs.config.allowUnfree = true;
 
   imports = [
     # Include the results of the hardware scan.

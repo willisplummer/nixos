@@ -16,6 +16,7 @@
     "nix-command"
     "flakes"
   ];
+  nix.settings.allowUnfree = true;
 
   imports = [
     # Include the results of the hardware scan.
@@ -174,15 +175,6 @@
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
   };
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) [
-      "steam"
-      "steam-original"
-      "steam-unwrapped"
-      "steam-run"
-      "claude-code"
-    ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

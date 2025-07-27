@@ -23,6 +23,7 @@
     ../../modules/nixos/caps-remap.nix
     ../../modules/nixos/greetd.nix
     inputs.home-manager.nixosModules.default
+    ./homelab/default.nix
   ];
 
   # Bootloader.
@@ -251,15 +252,8 @@
 
   services.tailscale.enable = true;
 
-  # reverse proxy to jellyfin test
-  services.nginx = {
-    enable = true;
-    virtualHosts."nixos.local" = {
-      enableACME = false;
-      forceSSL = false;
-      locations."/".proxyPass = "http://homelab:8096/";
-    };
-  };
+  # nginx disabled - using homelab module's caddy instead
+  # services.nginx.enable = true;
 
   # List services that you want to enable:
 

@@ -152,6 +152,10 @@
       cmake
       gcc
       wl-clipboard
+
+      docker
+      docker-compose
+      docker-buildx
     ];
     shell = pkgs.zsh;
   };

@@ -153,9 +153,7 @@
       gcc
       wl-clipboard
 
-      docker
-      docker-compose
-      docker-buildx
+      claude-code
     ];
     shell = pkgs.zsh;
   };

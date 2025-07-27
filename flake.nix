@@ -39,6 +39,7 @@
             }
           )
           ./hosts/default/configuration.nix
+          ./homelab
           inputs.home-manager.nixosModules.default
         ];
       };

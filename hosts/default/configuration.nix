@@ -252,9 +252,6 @@
 
   services.tailscale.enable = true;
 
-  # nginx disabled - using homelab module's caddy instead
-  # services.nginx.enable = true;
-
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.

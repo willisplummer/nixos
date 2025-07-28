@@ -18,9 +18,9 @@ in
       type = lib.types.str;
       default = "/var/lib/${service}";
     };
-    url = lib.mkOption {
+    path = lib.mkOption {
       type = lib.types.str;
-      default = "jellyfin.${homelab.baseDomain}";
+      default = "jellyfin";
     };
     homepage.name = lib.mkOption {
       type = lib.types.str;
@@ -63,12 +63,21 @@ in
       enable = true;
       user = homelab.user;
       group = homelab.group;
+      openFirewall = true;
+      dataDir = cfg.configDir;
     };
-    services.caddy.virtualHosts."${cfg.url}" = {
-      extraConfig = ''
-        tls internal
-        reverse_proxy http://127.0.0.1:8096
-      '';
-    };
+    services.caddy.virtualHosts."${config.homelab.baseDomain}".extraConfig = ''
+      # Optional: Redirect /jellyfin to /jellyfin/ to ensure proper path handling
+      redir /jellyfin /jellyfin/
+
+      # Reverse proxy requests for /jellyfin/ and its subpaths
+      reverse_proxy /jellyfin/* localhost:8096 {
+          # Optional: Set appropriate headers for reverse proxying
+          header_up Host {http.request.host}
+          header_up X-Real-IP {remote_ip}
+          header_up X-Forwarded-For {remote_ip}
+          header_up X-Forwarded-Proto {http.request.scheme}
+      }
+    '';
   };
 }

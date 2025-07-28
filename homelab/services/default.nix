@@ -14,30 +14,19 @@
       80
       443
     ];
-    # security.acme = {
-    #   acceptTerms = true;
-    #   defaults.email = "willisplummer@gmail.com";
-    #   certs = {
-    #     "${config.homelab.baseDomain}" = {
-    #       listenHTTP = "0.0.0.0:80";
-    #     };
-    #   }; # don't try to issue certs for .local
-    # };
 
     services.caddy = {
       enable = true;
       globalConfig = ''
         local_certs
       '';
-      virtualHosts = { };
-      # acmeCA = null;
-      # virtualHosts = {
-      #   "${config.homelab.baseDomain}" = {
-      #     extraConfig = ''
-      #       tls internal
-      #     '';
-      #   };
-      # };
+      virtualHosts = {
+        "${config.homelab.baseDomain}" = {
+          extraConfig = ''
+            tls internal
+          '';
+        };
+      };
     };
   };
 

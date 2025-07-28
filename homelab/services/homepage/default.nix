@@ -127,8 +127,8 @@ in
                 "${hl.${x}.homepage.name}" = {
                   icon = hl.${x}.homepage.icon;
                   description = hl.${x}.homepage.description;
-                  href = "https://${hl.${x}.url}";
-                  siteMonitor = "https://${hl.${x}.url}";
+                  href = "https://${homelab.baseDomain}/${hl.${x}.path}";
+                  siteMonitor = "https://${homelab.baseDomain}/${hl.${x}.path}";
                 };
               });
         })
@@ -178,7 +178,7 @@ in
                     widget = {
                       type = "glances";
                       url = "http://localhost:${port}";
-                      metric = "network:enp2s0";
+                      metric = "network:enp0s31f6";
                       chart = false;
                       version = 4;
                     };
@@ -189,7 +189,6 @@ in
         ];
     };
     services.caddy.virtualHosts."${homelab.baseDomain}" = {
-      # useACMEHost = homelab.baseDomain;
       extraConfig = ''
         reverse_proxy http://127.0.0.1:${toString config.services.${service}.listenPort}
       '';

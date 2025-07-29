@@ -127,8 +127,8 @@ in
                 "${hl.${x}.homepage.name}" = {
                   icon = hl.${x}.homepage.icon;
                   description = hl.${x}.homepage.description;
-                  href = "https://${homelab.baseDomain}/${hl.${x}.path}";
-                  siteMonitor = "https://${homelab.baseDomain}/${hl.${x}.path}";
+                  href = "https://${hl.${x}.url}";
+                  siteMonitor = "https://${homelab.baseDomain}/${hl.${x}.url}";
                 };
               });
         })
@@ -189,6 +189,7 @@ in
         ];
     };
     services.caddy.virtualHosts."${homelab.baseDomain}" = {
+      useACMEHost = homelab.baseDomain;
       extraConfig = ''
         reverse_proxy http://127.0.0.1:${toString config.services.${service}.listenPort}
       '';

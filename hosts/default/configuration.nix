@@ -37,6 +37,10 @@
   #  SuspendState=mem
   #'';
 
+  networking.nameservers = [
+    "1.1.1.1"
+    "8.8.8.8"
+  ];
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -155,6 +159,7 @@
       wl-clipboard
 
       claude-code
+      cloudflared
     ];
     shell = pkgs.zsh;
   };
@@ -197,6 +202,7 @@
     networkmanagerapplet
     wofi
     pavucontrol
+    cloudflared
   ];
 
   xdg.portal.enable = true;
@@ -250,7 +256,35 @@
     };
   };
 
-  services.tailscale.enable = true;
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "both";
+  };
+  networking.firewall = {
+    trustedInterfaces = [ "tailscale0" ];
+    allowedUDPPorts = [ 41641 ]; # Tailscale port
+    checkReversePath = "loose"; # Helps with routing
+  };
+  boot.kernel.sysctl = {
+    "net.ipv4.ip_forward" = true;
+  };
+
+  systemd.services.tailscale-subnet-router = {
+    description = "Tailscale Subnet Router";
+    after = [
+      "network-online.target"
+      "tailscale.service"
+    ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = ''
+        ${pkgs.tailscale}/bin/tailscale up \
+          --advertise-routes=192.168.1.173/32 \
+          --accept-dns=false
+      '';
+    };
+  };
 
   # List services that you want to enable:
 

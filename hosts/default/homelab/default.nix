@@ -11,7 +11,7 @@ in
 {
   homelab = {
     enable = true;
-    baseDomain = "lab.westernbeefs.com";
+    baseDomain = "westernbeefs.com";
     timeZone = "America/New_York";
     cloudflare.dnsCredentialsFile = "/home/wmp224/cloudflare";
     services = {
